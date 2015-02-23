@@ -4,7 +4,7 @@ module.exports = TodoList;
 
 var todosHelper = require('../lib/helpers/todosHelper'),
 	data = require('../todos.json'),
-	todos = todosHelper.loadFromJSON(data);
+	todos = todosHelper.loadFromObject(data);
 
 /*
  * This is a Catberry Store file.
