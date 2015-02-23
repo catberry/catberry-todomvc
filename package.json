@@ -1,0 +1,30 @@
+{
+  "name": "catberry-todomvc",
+  "version": "0.1.0",
+  "description": "TodoMVC implemented with Catberry Framework",
+  "main": "./server.js",
+  "browser": {
+    "./config/environment.js": "./config/browser.js"
+  },
+  "author": "Julia Rechkunova",
+  "license": "MIT",
+  "dependencies": {
+    "catberry": "^4.0.0",
+    "catberry-handlebars": "^1.0.0",
+    "connect": "^3.0.0",
+    "errorhandler": "^1.0.0",
+    "gulp": "^3.8.11",
+    "serve-static": "^1.0.0",
+    "todomvc-app-css": "^1.0.0",
+    "todomvc-common": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=0.10"
+  },
+  "scripts": {
+    "start": "npm run release",
+    "release": "node ./build.js release && ./node_modules/.bin/gulp && node ./server.js release",
+    "debug": "node ./build.js & ./node_modules/.bin/gulp & node ./server.js",
+    "debug-win": "start /B node ./build.js && start /B node ./server.js"
+  }
+}
