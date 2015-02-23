@@ -90,6 +90,25 @@ TodoList.prototype.handleMarkTodo = function (args) {
 };
 
 /**
+ * Handles action named "edit-todo".
+ * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ */
+TodoList.prototype.handleEditTodo = function (args) {
+	if (!args.label) {
+		this.handleDeleteTodo(args);
+		return;
+	}
+
+	if (args.index < 0 || args.index >= ITEMS.length) {
+		return;
+	}
+
+	ITEMS[args.index].label = args.label;
+
+	this.$context.changed();
+};
+
+/**
  * Handles action named "delete-todo".
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
