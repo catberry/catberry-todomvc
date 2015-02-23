@@ -32,14 +32,41 @@ TodoList.prototype.render = function () {
  * @returns {Promise<Object>|Object|null|undefined} Binding settings.
  */
 TodoList.prototype.bind = function () {
-
+	return {
+		click: {
+			button: this._handleDelete
+		},
+		change: {
+			input: this._handleMark
+		}
+	};
 };
 
 /**
- * Does cleaning for everything that have NOT been set by .bind() method.
- * This method is optional.
- * @returns {Promise|undefined} Promise or nothing.
+ * Handles changed status of todo
+ * @param {Event} event
+ * @private
  */
-TodoList.prototype.unbind = function () {
+TodoList.prototype._handleMark = function (event) {
+	var $target = event.currentTarget,
+		$item = $target.parentNode.parentNode;
 
+	this.$context.sendAction('mark-todo', {
+		index: $item.getAttribute('data-index'),
+		isCompleted: $target.checked
+	});
+};
+
+/**
+ * Handles deleting of todo
+ * @param {Event} event
+ * @private
+ */
+TodoList.prototype._handleDelete = function (event) {
+	var $target = event.currentTarget,
+		$item = $target.parentNode.parentNode;
+
+	this.$context.sendAction('delete-todo', {
+		index: $item.getAttribute('data-index')
+	});
 };

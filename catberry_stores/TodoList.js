@@ -74,3 +74,31 @@ TodoList.prototype.handleAddTodo = function (args) {
 	});
 	this.$context.changed();
 };
+
+/**
+ * Handles action named "mark-todo".
+ * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ */
+TodoList.prototype.handleMarkTodo = function (args) {
+	if (args.index < 0 || args.index >= ITEMS.length) {
+		return;
+	}
+
+	ITEMS[args.index].isCompleted = args.isCompleted;
+
+	this.$context.changed();
+};
+
+/**
+ * Handles action named "delete-todo".
+ * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ */
+TodoList.prototype.handleDeleteTodo = function (args) {
+	if (args.index < 0 || args.index >= ITEMS.length) {
+		return;
+	}
+
+	ITEMS.splice(args.index, 1);
+
+	this.$context.changed();
+};
