@@ -39,11 +39,12 @@ Filters.prototype.load = function () {
 	}
 
 	var params = {
-		showAll: (filter === null)
+		showAll: (filter === null),
+		showFiltered: {}
 	};
 
 	if (filter) {
-		params['show' + filter[0].toUpperCase() + filter.substring(1)] = true;
+		params.showFiltered[filter] = true;
 	}
 
 	return params;

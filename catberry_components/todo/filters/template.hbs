@@ -3,9 +3,9 @@
 		<a {{#if showAll}}class="selected"{{/if}} href="/">All</a>
 	</li>
 	<li>
-		<a {{#if showActive}}class="selected"{{/if}} href="/active">Active</a>
+		<a {{#if showFiltered.active}}class="selected"{{/if}} href="/active">Active</a>
 	</li>
 	<li>
-		<a {{#if showCompleted}}class="selected"{{/if}} href="/completed">Completed</a>
+		<a {{#if showFiltered.completed}}class="selected"{{/if}} href="/completed">Completed</a>
 	</li>
 </ul>
