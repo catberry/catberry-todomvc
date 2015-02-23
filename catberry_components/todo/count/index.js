@@ -29,7 +29,7 @@ TodoCount.prototype.render = function () {
 
 	return storeData.then(function (data) {
 		var count = todosHelper
-				.getCount(data.items, todosHelper.only.active);
+				.getCount(data.allItems, todosHelper.only.active);
 
 		return {
 			count: count,

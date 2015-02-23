@@ -9,4 +9,3 @@ var catberry = require('catberry'),
 
 templateEngine.register(cat.locator);
 cat.startWhenReady();
-
