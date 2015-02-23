@@ -1,0 +1,4 @@
+{
+	"name": "todo-input",
+	"template": "./template.hbs"
+}

@@ -1,0 +1,4 @@
+{
+	"name": "todo-content",
+	"template": "./template.hbs"
+}
