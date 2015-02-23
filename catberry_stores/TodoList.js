@@ -90,6 +90,18 @@ TodoList.prototype.handleMarkTodo = function (args) {
 };
 
 /**
+ * Handles action named "mark-all-todos".
+ * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ */
+TodoList.prototype.handleMarkAllTodos = function (args) {
+	ITEMS.forEach(function (item) {
+		item.isCompleted = args.isCompleted;
+	});
+
+	this.$context.changed();
+};
+
+/**
  * Handles action named "edit-todo".
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
@@ -118,6 +130,18 @@ TodoList.prototype.handleDeleteTodo = function (args) {
 	}
 
 	ITEMS.splice(args.index, 1);
+
+	this.$context.changed();
+};
+
+/**
+ * Handles action named "delete-completed-todos".
+ * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ */
+TodoList.prototype.handleDeleteCompletedTodos = function () {
+	ITEMS = ITEMS.filter(function (item) {
+		return !item.isCompleted;
+	});
 
 	this.$context.changed();
 };

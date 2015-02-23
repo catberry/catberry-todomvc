@@ -1,0 +1,4 @@
+{
+	"name": "todo-clear-button",
+	"template": "./template.hbs"
+}
