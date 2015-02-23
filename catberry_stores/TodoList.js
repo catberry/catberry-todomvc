@@ -64,11 +64,13 @@ TodoList.prototype.load = function () {
 };
 
 /**
- * Handles action named "some-action" from any component.
+ * Handles action named "add-todo".
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
-TodoList.prototype.handleSomeAction = function () {
-	// Here you can call this.$context.changed() if you know
-	// that remote data source has been changed.
-	// Also you can have many handle methods for other actions.
+TodoList.prototype.handleAddTodo = function (args) {
+	ITEMS.push({
+		isCompleted: false,
+		label: args.label
+	});
+	this.$context.changed();
 };

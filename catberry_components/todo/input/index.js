@@ -17,6 +17,12 @@ function TodoInput() {
 }
 
 /**
+ * Input DOM element
+ * @type {Node}
+ */
+TodoInput.prototype.$input = null;
+
+/**
  * Gets data context for template engine.
  * This method is optional.
  * @returns {Promise<Object>|Object|null|undefined} Data context
@@ -32,14 +38,42 @@ TodoInput.prototype.render = function () {
  * @returns {Promise<Object>|Object|null|undefined} Binding settings.
  */
 TodoInput.prototype.bind = function () {
-
+	this.$input = this.$context.element.querySelector('input');
+	return {
+		submit: {
+			form: this._handleAddTodo
+		}
+	};
 };
 
 /**
- * Does cleaning for everything that have NOT been set by .bind() method.
- * This method is optional.
- * @returns {Promise|undefined} Promise or nothing.
+ * Handles submit form event
+ * @param {Event} event
+ * @private
  */
-TodoInput.prototype.unbind = function () {
+TodoInput.prototype._handleAddTodo = function (event) {
+	event.preventDefault();
+	event.stopPropagation();
 
+	this.$context.sendAction('add-todo', {
+		label: this.getValue()
+	});
+
+	this.clearValue();
+};
+
+/**
+ * Gets label of todo
+ * @returns {string}
+ */
+TodoInput.prototype.getValue = function () {
+	return this.$input.value;
+};
+
+/**
+ * Clears input
+ */
+TodoInput.prototype.clearValue = function () {
+	this.$input.value = '';
+	this.$input.focus();
 };
