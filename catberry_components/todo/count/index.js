@@ -2,6 +2,8 @@
 
 module.exports = TodoCount;
 
+var todosHelper = require('../../../lib/helpers/todosHelper');
+
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -26,11 +28,8 @@ TodoCount.prototype.render = function () {
 	var storeData = this.$context.getStoreData();
 
 	return storeData.then(function (data) {
-		var count = data.items
-				.filter(function (item) {
-					return !item.isCompleted;
-				})
-				.length;
+		var count = todosHelper
+				.getCount(data.items, todosHelper.only.active);
 
 		return {
 			count: count,

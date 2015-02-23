@@ -1,0 +1,16 @@
+{
+	"items": [
+		{
+			"isCompleted": true,
+			"label": "Taste JavaScript"
+		},
+		{
+			"isCompleted": false,
+			"label": "Buy a unicorn"
+		},
+		{
+			"isCompleted": false,
+			"label": "Use Catberry in next project"
+		}
+	]
+}

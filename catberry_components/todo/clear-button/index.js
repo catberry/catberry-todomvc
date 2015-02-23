@@ -2,6 +2,8 @@
 
 module.exports = TodoClearButton;
 
+var todosHelper = require('../../../lib/helpers/todosHelper');
+
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -26,13 +28,11 @@ TodoClearButton.prototype.render = function () {
 	var storeData = this.$context.getStoreData();
 
 	return storeData.then(function (data) {
-		var completedItems = data.items
-				.filter(function (item) {
-					return item.isCompleted;
-				});
+		var count = todosHelper
+				.getCount(data.allItems, todosHelper.only.completed);
 
 		return {
-			hasCompleted: (completedItems.length > 0)
+			hasCompleted: (count > 0)
 		};
 	});
 };
@@ -51,7 +51,7 @@ TodoClearButton.prototype.bind = function () {
 };
 
 /**
- * Handles button click
+ * Handles button click.
  * @private
  */
 TodoClearButton.prototype._handleClearCompletedTodos = function () {

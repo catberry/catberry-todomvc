@@ -47,7 +47,7 @@ TodoInput.prototype.bind = function () {
 };
 
 /**
- * Handles submit form event
+ * Handles submit form event.
  * @param {Event} event
  * @private
  */
@@ -63,7 +63,7 @@ TodoInput.prototype._handleAddTodo = function (event) {
 };
 
 /**
- * Gets label of todo
+ * Gets label of todo.
  * @returns {string}
  */
 TodoInput.prototype.getValue = function () {
@@ -71,7 +71,7 @@ TodoInput.prototype.getValue = function () {
 };
 
 /**
- * Clears input
+ * Clears input.
  */
 TodoInput.prototype.clearValue = function () {
 	this.$input.value = '';

@@ -23,5 +23,11 @@ function TodoFooter() {
  * for template engine.
  */
 TodoFooter.prototype.render = function () {
+	var storeData = this.$context.getStoreData();
 
+	return storeData.then(function (data) {
+		return {
+			hasItems: (data.allItems.length > 0)
+		};
+	});
 };

@@ -2,29 +2,9 @@
 
 module.exports = TodoList;
 
-var FILTERS = {
-	active: function (item) {
-		return !item.isCompleted;
-	},
-	completed: function (item) {
-		return item.isCompleted;
-	}
-};
-
-var ITEMS = [
-	{
-		isCompleted: true,
-		label: 'Taste JavaScript'
-	},
-	{
-		isCompleted: false,
-		label: 'Buy a unicorn'
-	},
-	{
-		isCompleted: false,
-		label: 'Make Catberry TodoMVC'
-	}
-];
+var todosHelper = require('../lib/helpers/todosHelper'),
+	data = require('../todos.json'),
+	todos = todosHelper.loadFromJSON(data);
 
 /*
  * This is a Catberry Store file.
@@ -51,15 +31,11 @@ TodoList.prototype.$lifetime = 60000;
  * @returns {Promise<Object>|Object|null|undefined} Loaded data.
  */
 TodoList.prototype.load = function () {
-	var filter = this.$context.state.filter || null,
-		filteredItems = ITEMS;
-
-	if (filter && FILTERS.hasOwnProperty(filter)) {
-		filteredItems = ITEMS.filter(FILTERS[filter]);
-	}
+	var filter = this.$context.state.filter || null;
 
 	return {
-		items: filteredItems
+		items: todosHelper.filter(todos, filter),
+		allItems: todos
 	};
 };
 
@@ -68,10 +44,7 @@ TodoList.prototype.load = function () {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleAddTodo = function (args) {
-	ITEMS.push({
-		isCompleted: false,
-		label: args.label
-	});
+	todosHelper.append(todos, args.label);
 	this.$context.changed();
 };
 
@@ -80,11 +53,11 @@ TodoList.prototype.handleAddTodo = function (args) {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleMarkTodo = function (args) {
-	if (args.index < 0 || args.index >= ITEMS.length) {
+	if (args.index < 0 || args.index >= todos.length) {
 		return;
 	}
 
-	ITEMS[args.index].isCompleted = args.isCompleted;
+	todos[args.index].setStatus(args.isCompleted);
 
 	this.$context.changed();
 };
@@ -94,10 +67,7 @@ TodoList.prototype.handleMarkTodo = function (args) {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleMarkAllTodos = function (args) {
-	ITEMS.forEach(function (item) {
-		item.isCompleted = args.isCompleted;
-	});
-
+	todosHelper.setStatusToAll(todos, args.isCompleted);
 	this.$context.changed();
 };
 
@@ -111,11 +81,11 @@ TodoList.prototype.handleEditTodo = function (args) {
 		return;
 	}
 
-	if (args.index < 0 || args.index >= ITEMS.length) {
+	if (args.index < 0 || args.index >= todos.length) {
 		return;
 	}
 
-	ITEMS[args.index].label = args.label;
+	todos[args.index].edit(args.label);
 
 	this.$context.changed();
 };
@@ -125,11 +95,11 @@ TodoList.prototype.handleEditTodo = function (args) {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleDeleteTodo = function (args) {
-	if (args.index < 0 || args.index >= ITEMS.length) {
+	if (args.index < 0 || args.index >= todos.length) {
 		return;
 	}
 
-	ITEMS.splice(args.index, 1);
+	todos.splice(args.index, 1);
 
 	this.$context.changed();
 };
@@ -139,9 +109,6 @@ TodoList.prototype.handleDeleteTodo = function (args) {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleDeleteCompletedTodos = function () {
-	ITEMS = ITEMS.filter(function (item) {
-		return !item.isCompleted;
-	});
-
+	todos = todosHelper.filter(todos, todosHelper.only.active);
 	this.$context.changed();
 };

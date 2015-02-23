@@ -2,6 +2,8 @@
 
 module.exports = TodoToggle;
 
+var todosHelper = require('../../../lib/helpers/todosHelper');
+
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -27,10 +29,7 @@ TodoToggle.prototype.render = function () {
 
 	return storeData.then(function (data) {
 		return {
-			areAllCompleted: data.items
-					.every(function (item) {
-						return item.isCompleted;
-					})
+			areAllCompleted: todosHelper.areAllCompleted(data.items)
 		};
 	});
 };

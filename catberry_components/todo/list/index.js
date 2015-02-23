@@ -58,7 +58,7 @@ TodoList.prototype.bind = function () {
 };
 
 /**
- * Handles changed status of todo
+ * Handles changed status of todo.
  * @param {Event} event
  * @private
  */
@@ -73,7 +73,7 @@ TodoList.prototype._handleMark = function (event) {
 };
 
 /**
- * Handles edit of todo
+ * Handles edit of todo.
  * @param {Event} event
  * @private
  */
@@ -92,7 +92,7 @@ TodoList.prototype._handleEdit = function (event) {
 };
 
 /**
- * Handles start editing of todo
+ * Handles start editing of todo.
  * @param {Event} event
  * @private
  */
@@ -105,7 +105,7 @@ TodoList.prototype._handleStartEditing = function (event) {
 };
 
 /**
- * Handles finish editing of todo
+ * Handles finish editing of todo.
  * @param {Event} event
  * @private
  */
@@ -117,7 +117,7 @@ TodoList.prototype._handleFinishEditing = function (event) {
 };
 
 /**
- * Handles cancel editing of todo
+ * Handles cancel editing of todo.
  * @param {Event} event
  * @private
  */
@@ -133,7 +133,7 @@ TodoList.prototype._handleCancelEditing = function (event) {
 };
 
 /**
- * Handles deleting of todo
+ * Handles deleting of todo.
  * @param {Event} event
  * @private
  */
