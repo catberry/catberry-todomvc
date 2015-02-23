@@ -26,9 +26,15 @@ TodoCount.prototype.render = function () {
 	var storeData = this.$context.getStoreData();
 
 	return storeData.then(function (data) {
+		var count = data.items
+				.filter(function (item) {
+					return !item.isCompleted;
+				})
+				.length;
+
 		return {
-			count: data.items.length,
-			isEmpty: (data.items.length === 0)
+			count: count,
+			isEmpty: (count === 0)
 		};
 	});
 };
