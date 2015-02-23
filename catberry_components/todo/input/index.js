@@ -18,19 +18,9 @@ function TodoInput() {
 
 /**
  * Input DOM element
- * @type {Node}
+ * @type {Element}
  */
-TodoInput.prototype.$input = null;
-
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TodoInput.prototype.render = function () {
-
-};
+TodoInput.prototype.inputElement = null;
 
 /**
  * Returns event binding settings for the component.
@@ -38,7 +28,7 @@ TodoInput.prototype.render = function () {
  * @returns {Promise<Object>|Object|null|undefined} Binding settings.
  */
 TodoInput.prototype.bind = function () {
-	this.$input = this.$context.element.querySelector('input');
+	this.inputElement = this.$context.element.querySelector('input');
 	return {
 		submit: {
 			form: this._handleAddTodo
@@ -67,13 +57,13 @@ TodoInput.prototype._handleAddTodo = function (event) {
  * @returns {string}
  */
 TodoInput.prototype.getValue = function () {
-	return this.$input.value;
+	return this.inputElement.value;
 };
 
 /**
  * Clears input.
  */
 TodoInput.prototype.clearValue = function () {
-	this.$input.value = '';
-	this.$input.focus();
+	this.inputElement.value = '';
+	this.inputElement.focus();
 };

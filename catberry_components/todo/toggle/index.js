@@ -53,9 +53,9 @@ TodoToggle.prototype.bind = function () {
  * @private
  */
 TodoToggle.prototype._handleToggleStatus = function (event) {
-	var $target = event.currentTarget;
+	var targetElement = event.currentTarget;
 
 	this.$context.sendAction('mark-all-todos', {
-		isCompleted: $target.checked
+		isCompleted: targetElement.checked
 	});
 };

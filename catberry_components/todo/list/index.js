@@ -63,12 +63,12 @@ TodoList.prototype.bind = function () {
  * @private
  */
 TodoList.prototype._handleMark = function (event) {
-	var $target = event.currentTarget,
-		$item = $target.parentNode.parentNode;
+	var targetElement = event.currentTarget,
+		itemElement = targetElement.parentNode.parentNode;
 
 	this.$context.sendAction('mark-todo', {
-		index: $item.getAttribute('data-index'),
-		isCompleted: $target.checked
+		index: itemElement.getAttribute('data-index'),
+		isCompleted: targetElement.checked
 	});
 };
 
@@ -81,13 +81,13 @@ TodoList.prototype._handleEdit = function (event) {
 	event.preventDefault();
 	event.stopPropagation();
 
-	var $target = event.currentTarget,
-		$item = $target.parentNode,
-		$input = $target.querySelector('input');
+	var targetElement = event.currentTarget,
+		itemElement = targetElement.parentNode,
+		inputElement = targetElement.querySelector('input');
 
 	this.$context.sendAction('edit-todo', {
-		index: $item.getAttribute('data-index'),
-		label: $input.value
+		index: itemElement.getAttribute('data-index'),
+		label: inputElement.value
 	});
 };
 
@@ -97,11 +97,11 @@ TodoList.prototype._handleEdit = function (event) {
  * @private
  */
 TodoList.prototype._handleStartEditing = function (event) {
-	var $target = event.currentTarget,
-		$item = $target.parentNode.parentNode;
+	var targetElement = event.currentTarget,
+		itemElement = targetElement.parentNode.parentNode;
 
-	$item.classList.add(EDITING_CLASS_NAME);
-	$item.querySelector('input[type=text]').focus();
+	itemElement.classList.add(EDITING_CLASS_NAME);
+	itemElement.querySelector('input[type=text]').focus();
 };
 
 /**
@@ -110,10 +110,10 @@ TodoList.prototype._handleStartEditing = function (event) {
  * @private
  */
 TodoList.prototype._handleFinishEditing = function (event) {
-	var $target = event.currentTarget,
-		$item = $target.parentNode.parentNode;
+	var targetElement = event.currentTarget,
+		itemElement = targetElement.parentNode.parentNode;
 
-	$item.classList.remove(EDITING_CLASS_NAME);
+	itemElement.classList.remove(EDITING_CLASS_NAME);
 };
 
 /**
@@ -126,10 +126,10 @@ TodoList.prototype._handleCancelEditing = function (event) {
 		return;
 	}
 
-	var $target = event.currentTarget,
-		$item = $target.parentNode.parentNode;
+	var targetElement = event.currentTarget,
+		itemElement = targetElement.parentNode.parentNode;
 
-	$item.classList.remove(EDITING_CLASS_NAME);
+	itemElement.classList.remove(EDITING_CLASS_NAME);
 };
 
 /**
@@ -138,10 +138,10 @@ TodoList.prototype._handleCancelEditing = function (event) {
  * @private
  */
 TodoList.prototype._handleDelete = function (event) {
-	var $target = event.currentTarget,
-		$item = $target.parentNode.parentNode;
+	var targetElement = event.currentTarget,
+		itemElement = targetElement.parentNode.parentNode;
 
 	this.$context.sendAction('delete-todo', {
-		index: $item.getAttribute('data-index')
+		index: itemElement.getAttribute('data-index')
 	});
 };
