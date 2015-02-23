@@ -1,0 +1,8 @@
+<!-- This footer should hidden by default and shown when there are todos -->
+{{#if hasItems}}
+	<footer id="footer">
+		<cat-todo-count id="js-cat-todo-count" cat-store="TodoList"></cat-todo-count>
+		<cat-todo-filters id="js-cat-todo-filters" cat-store="Filters"></cat-todo-filters>
+		<cat-todo-clear-button id="js-cat-todo-clear-button" cat-store="TodoList"></cat-todo-clear-button>
+	</footer>
+{{/if}}

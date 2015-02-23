@@ -9,11 +9,13 @@
   "author": "Julia Rechkunova",
   "license": "MIT",
   "dependencies": {
-    "catberry": "^4.0.0",
-    "catberry-handlebars": "^1.0.0",
+    "catberry": "^4.3.6",
+    "catberry-handlebars": "^1.0.2",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
     "gulp": "^3.8.11",
+    "jscs": "^1.11.3",
+    "jshint": "^2.6.0",
     "serve-static": "^1.0.0",
     "todomvc-app-css": "^1.0.0",
     "todomvc-common": "^1.0.0"
@@ -25,6 +27,7 @@
     "start": "npm run release",
     "release": "node ./build.js release && ./node_modules/.bin/gulp && node ./server.js release",
     "debug": "node ./build.js & ./node_modules/.bin/gulp & node ./server.js",
-    "debug-win": "start /B node ./build.js && start /B node ./server.js"
+    "lint": "./node_modules/.bin/jshint ./ && ./node_modules/.bin/jscs ./",
+    "test": "npm run lint"
   }
 }

@@ -8,4 +8,3 @@ var isRelease = process.argv.length === 3 ?
 
 templateEngine.register(cat.locator);
 cat.build();
-

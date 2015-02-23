@@ -1,0 +1,4 @@
+{
+	"name": "todo-toggle",
+	"template": "./template.hbs"
+}

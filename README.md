@@ -12,7 +12,29 @@
 - [Gitter](https://gitter.im/catberry/catberry)
 - [Twitter](https://twitter.com/catberryjs)
 
-*Let us [know](https://github.com/JuliaRechkunova/catberry-todomvc/issues) if you discover anything worth sharing.*
+*Let us [know](https://github.com/catberry/catberry/issues) if you discover anything worth sharing.*
+
+## Implementation
+
+### How to use
+
+First of all it is needed to install dependencies:
+
+```
+npm install
+```
+
+Then to start in `debug` mode without script minification and with file watching:
+
+```
+npm run debug
+```
+
+To start in `release` mode:
+
+```
+npm start
+```
 
 ## Credit
 

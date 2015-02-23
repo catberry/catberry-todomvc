@@ -2,5 +2,6 @@
 	"title": "Catberry • TodoMVC",
 	"server": {
 		"port": 3000
-	}
+	},
+	"componentsGlob": "catberry_components/**/cat-component.json"
 }

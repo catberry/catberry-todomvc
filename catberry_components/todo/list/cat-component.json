@@ -1,0 +1,4 @@
+{
+	"name": "todo-list",
+	"template": "./template.hbs"
+}
