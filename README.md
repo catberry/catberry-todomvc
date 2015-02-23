@@ -12,7 +12,7 @@
 - [Gitter](https://gitter.im/catberry/catberry)
 - [Twitter](https://twitter.com/catberryjs)
 
-*Let us [know](https://github.com/JuliaRechkunova/catberry-todomvc/issues) if you discover anything worth sharing.*
+*Let us [know](https://github.com/catberry/catberry/issues) if you discover anything worth sharing.*
 
 ## Implementation
 
