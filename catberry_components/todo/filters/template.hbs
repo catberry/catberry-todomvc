@@ -1,11 +1,11 @@
 <ul id="filters">
 	<li>
-		<a class="selected" href="/">All</a>
+		<a {{#if showAll}}class="selected"{{/if}} href="/">All</a>
 	</li>
 	<li>
-		<a href="/active">Active</a>
+		<a {{#if showActive}}class="selected"{{/if}} href="/active">Active</a>
 	</li>
 	<li>
-		<a href="/completed">Completed</a>
+		<a {{#if showCompleted}}class="selected"{{/if}} href="/completed">Completed</a>
 	</li>
 </ul>

@@ -1,2 +1,4 @@
-<!-- This should be `0 items left` by default -->
-<span id="todo-count"><strong>0</strong> item left</span>
+<!-- This should be `0 item left` by default -->
+<span id="todo-count">
+	<strong>{{count}}</strong> item{{#unless isEmpty}}s{{/unless}} left
+</span>

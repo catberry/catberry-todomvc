@@ -2,6 +2,30 @@
 
 module.exports = TodoList;
 
+var FILTERS = {
+	active: function (item) {
+		return !item.isCompleted;
+	},
+	completed: function (item) {
+		return item.isCompleted;
+	}
+};
+
+var ITEMS = [
+	{
+		isCompleted: true,
+		label: 'Taste JavaScript'
+	},
+	{
+		isCompleted: false,
+		label: 'Buy a unicorn'
+	},
+	{
+		isCompleted: false,
+		label: 'Make Catberry TodoMVC'
+	}
+];
+
 /*
  * This is a Catberry Store file.
  * More details can be found here
@@ -27,17 +51,15 @@ TodoList.prototype.$lifetime = 60000;
  * @returns {Promise<Object>|Object|null|undefined} Loaded data.
  */
 TodoList.prototype.load = function () {
+	var filter = this.$context.state.filter || null,
+		filteredItems = ITEMS;
+
+	if (filter && FILTERS.hasOwnProperty(filter)) {
+		filteredItems = ITEMS.filter(FILTERS[filter]);
+	}
+
 	return {
-		items: [
-			{
-				isCompleted: true,
-				label: 'Taste JavaScript'
-			},
-			{
-				isCompleted: false,
-				label: 'Buy a unicorn'
-			}
-		]
+		items: filteredItems
 	};
 };
 
