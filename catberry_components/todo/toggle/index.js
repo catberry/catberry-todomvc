@@ -23,7 +23,16 @@ function TodoToggle() {
  * for template engine.
  */
 TodoToggle.prototype.render = function () {
+	var storeData = this.$context.getStoreData();
 
+	return storeData.then(function (data) {
+		return {
+			areAllCompleted: data.items
+					.every(function (item) {
+						return item.isCompleted;
+					})
+		};
+	});
 };
 
 /**
@@ -32,14 +41,22 @@ TodoToggle.prototype.render = function () {
  * @returns {Promise<Object>|Object|null|undefined} Binding settings.
  */
 TodoToggle.prototype.bind = function () {
-
+	return {
+		change: {
+			input: this._handleToggleStatus
+		}
+	};
 };
 
 /**
- * Does cleaning for everything that have NOT been set by .bind() method.
- * This method is optional.
- * @returns {Promise|undefined} Promise or nothing.
+ * Handles toggle event.
+ * @param {Event} event
+ * @private
  */
-TodoToggle.prototype.unbind = function () {
+TodoToggle.prototype._handleToggleStatus = function (event) {
+	var $target = event.currentTarget;
 
+	this.$context.sendAction('mark-all-todos', {
+		isCompleted: $target.checked
+	});
 };

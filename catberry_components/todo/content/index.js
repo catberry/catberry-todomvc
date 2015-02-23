@@ -23,23 +23,11 @@ function TodoContent() {
  * for template engine.
  */
 TodoContent.prototype.render = function () {
+	var storeData = this.$context.getStoreData();
 
-};
-
-/**
- * Returns event binding settings for the component.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Binding settings.
- */
-TodoContent.prototype.bind = function () {
-
-};
-
-/**
- * Does cleaning for everything that have NOT been set by .bind() method.
- * This method is optional.
- * @returns {Promise|undefined} Promise or nothing.
- */
-TodoContent.prototype.unbind = function () {
-
+	return storeData.then(function (data) {
+		return {
+			hasItems: (data.items.length > 0)
+		};
+	});
 };
