@@ -1,7 +1,7 @@
 {
   "name": "catberry-todomvc",
-  "version": "0.1.0",
-  "description": "TodoMVC implemented with Catberry Framework",
+  "version": "0.2.0",
+  "description": "TodoMVC implementation on Catberry Framework",
   "main": "./server.js",
   "browser": {
     "./config/environment.js": "./config/browser.js"
@@ -25,7 +25,7 @@
   },
   "scripts": {
     "start": "npm run release",
-    "release": "node ./build.js release && ./node_modules/.bin/gulp && node ./server.js release",
+    "release": "node ./build.js release && ./node_modules/.bin/gulp && node ./server.js release $PORT",
     "debug": "node ./build.js & ./node_modules/.bin/gulp & node ./server.js",
     "lint": "./node_modules/.bin/jshint ./ && ./node_modules/.bin/jscs ./",
     "test": "npm run lint"
