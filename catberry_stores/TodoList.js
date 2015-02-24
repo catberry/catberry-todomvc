@@ -110,5 +110,8 @@ TodoList.prototype.handleDeleteTodo = function (args) {
  */
 TodoList.prototype.handleDeleteCompletedTodos = function () {
 	todos = todosHelper.filter(todos, todosHelper.only.active);
+
+	todosHelper.enumerate(todos);
+
 	this.$context.changed();
 };
