@@ -27,7 +27,7 @@ TodoContent.prototype.render = function () {
 
 	return storeData.then(function (data) {
 		return {
-			hasItems: (data.items.length > 0)
+			hasItems: (Object.keys(data.items).length > 0)
 		};
 	});
 };
