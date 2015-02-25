@@ -85,7 +85,7 @@ TodoList.prototype.handleEditTodo = function (args) {
 
 	if (!todos.hasOwnProperty(args.key)) {
 		return;
-	}	
+	}
 
 	todos[args.key].edit(args.label);
 
