@@ -67,7 +67,7 @@ TodoList.prototype._handleMark = function (event) {
 		itemElement = targetElement.parentNode.parentNode;
 
 	this.$context.sendAction('mark-todo', {
-		index: itemElement.getAttribute('data-index'),
+		key: itemElement.getAttribute('data-key'),
 		isCompleted: targetElement.checked
 	});
 };
@@ -86,7 +86,7 @@ TodoList.prototype._handleEdit = function (event) {
 		inputElement = targetElement.querySelector('input');
 
 	this.$context.sendAction('edit-todo', {
-		index: itemElement.getAttribute('data-index'),
+		key: itemElement.getAttribute('data-key'),
 		label: inputElement.value
 	});
 };
@@ -142,6 +142,6 @@ TodoList.prototype._handleDelete = function (event) {
 		itemElement = targetElement.parentNode.parentNode;
 
 	this.$context.sendAction('delete-todo', {
-		index: itemElement.getAttribute('data-index')
+		key: itemElement.getAttribute('data-key')
 	});
 };
