@@ -1,7 +1,11 @@
 {
   "name": "catberry-todomvc",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "TodoMVC implementation on Catberry Framework",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:catberry/catberry-todomvc.git"
+  },
   "main": "./server.js",
   "browser": {
     "./config/environment.js": "./config/browser.js"
@@ -9,7 +13,7 @@
   "author": "Julia Rechkunova",
   "license": "MIT",
   "dependencies": {
-    "catberry": "^4.4.0",
+    "catberry": "^4.4.1",
     "catberry-handlebars": "^1.0.2",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
