@@ -44,7 +44,8 @@ TodoList.prototype.load = function () {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleAddTodo = function (args) {
-	todosHelper.append(todos, args.label);
+	todosHelper.add(todos, args.label);
+
 	this.$context.changed();
 };
 
@@ -53,11 +54,11 @@ TodoList.prototype.handleAddTodo = function (args) {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleMarkTodo = function (args) {
-	if (args.index < 0 || args.index >= todos.length) {
+	if (!todos.hasOwnProperty(args.key)) {
 		return;
 	}
 
-	todos[args.index].setStatus(args.isCompleted);
+	todos[args.key].setStatus(args.isCompleted);
 
 	this.$context.changed();
 };
@@ -68,6 +69,7 @@ TodoList.prototype.handleMarkTodo = function (args) {
  */
 TodoList.prototype.handleMarkAllTodos = function (args) {
 	todosHelper.setStatusToAll(todos, args.isCompleted);
+
 	this.$context.changed();
 };
 
@@ -81,11 +83,11 @@ TodoList.prototype.handleEditTodo = function (args) {
 		return;
 	}
 
-	if (args.index < 0 || args.index >= todos.length) {
+	if (!todos.hasOwnProperty(args.key)) {
 		return;
-	}
+	}	
 
-	todos[args.index].edit(args.label);
+	todos[args.key].edit(args.label);
 
 	this.$context.changed();
 };
@@ -95,11 +97,11 @@ TodoList.prototype.handleEditTodo = function (args) {
  * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleDeleteTodo = function (args) {
-	if (args.index < 0 || args.index >= todos.length) {
+	if (!todos.hasOwnProperty(args.key)) {
 		return;
 	}
 
-	todos.splice(args.index, 1);
+	delete todos[args.key];
 
 	this.$context.changed();
 };
@@ -110,5 +112,6 @@ TodoList.prototype.handleDeleteTodo = function (args) {
  */
 TodoList.prototype.handleDeleteCompletedTodos = function () {
 	todos = todosHelper.filter(todos, todosHelper.only.active);
+
 	this.$context.changed();
 };

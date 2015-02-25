@@ -27,7 +27,7 @@ TodoFooter.prototype.render = function () {
 
 	return storeData.then(function (data) {
 		return {
-			hasItems: (data.allItems.length > 0)
+			hasItems: (Object.keys(data.allItems).length > 0)
 		};
 	});
 };
