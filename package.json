@@ -1,6 +1,6 @@
 {
   "name": "catberry-todomvc",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "TodoMVC implementation on Catberry Framework",
   "main": "./server.js",
   "browser": {
