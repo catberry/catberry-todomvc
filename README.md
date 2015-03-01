@@ -1,5 +1,7 @@
 # Catberry • [TodoMVC](http://todomvc.com)
 
+[![Join the chat at https://gitter.im/catberry/catberry-todomvc](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/catberry/catberry-todomvc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > Catberry is a framework for fast and modular isomorphic web-applications written in JavaScript using node.js
 
 ## Resources
