@@ -1,6 +1,6 @@
 {
   "name": "catberry-todomvc",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "TodoMVC implementation on Catberry Framework",
   "repository": {
     "type": "git",
