@@ -13,7 +13,7 @@
   "author": "Julia Rechkunova",
   "license": "MIT",
   "dependencies": {
-    "catberry": "^4.4.1",
+    "catberry": "^4.5.1",
     "catberry-handlebars": "^1.0.2",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
