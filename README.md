@@ -38,6 +38,13 @@ To start in `release` mode:
 npm start
 ```
 
-## Credit
+## Contributing
 
-Created by [Julia Rechkunova](https://twitter.com/jughosta)
+There are a lot of ways to contribute:
+
+* Give it a star
+* Join the [Gitter](https://gitter.im/catberry/catberry) room and leave a feedback or help with answering users' questions
+* [Submit a bug or a feature request](https://github.com/catberry/catberry-todomvc/issues)
+* [Submit a PR](https://github.com/catberry/catberry-todomvc/blob/develop/CONTRIBUTING.md)
+
+[Julia Rechkunova](https://twitter.com/jughosta) <julia.rechkunova@gmail.com>
