@@ -1,6 +1,6 @@
 {
   "name": "catberry-todomvc",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "TodoMVC implementation on Catberry Framework",
   "repository": {
     "type": "git",
@@ -13,7 +13,7 @@
   "author": "Julia Rechkunova",
   "license": "MIT",
   "dependencies": {
-    "catberry": "^5.0.0",
+    "catberry": "^6.0.0",
     "catberry-handlebars": "^1.0.4",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
@@ -30,6 +30,7 @@
   "scripts": {
     "start": "npm run release",
     "release": "node ./build.js release && ./node_modules/.bin/gulp && node ./server.js release $PORT",
+    "release-win": "node ./build.js release && ./node_modules/.bin/gulp && node ./server.js release",
     "debug": "node ./build.js & ./node_modules/.bin/gulp & node ./server.js",
     "debug-win": "powershell -Command \"Start-Process -NoNewWindow node ./build.js; Start-Process -NoNewWindow -Wait ./node_modules/.bin/gulp; Start-Process -NoNewWindow -Wait node ./server.js\"",
     "lint": "./node_modules/.bin/jshint ./ && ./node_modules/.bin/jscs ./",
