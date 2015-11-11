@@ -12,9 +12,7 @@ module.exports = TodoInput;
  * Creates new instance of the "todo-input" component.
  * @constructor
  */
-function TodoInput() {
-
-}
+function TodoInput() { }
 
 /**
  * Input DOM element
@@ -38,7 +36,7 @@ TodoInput.prototype.bind = function () {
 
 /**
  * Handles submit form event.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoInput.prototype._handleAddTodo = function (event) {
@@ -54,7 +52,7 @@ TodoInput.prototype._handleAddTodo = function (event) {
 
 /**
  * Gets label of todo.
- * @returns {string}
+ * @returns {string} Current value in input.
  */
 TodoInput.prototype.getValue = function () {
 	return this.inputElement.value;

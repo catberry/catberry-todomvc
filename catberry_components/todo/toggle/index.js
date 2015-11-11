@@ -14,9 +14,7 @@ var todosHelper = require('../../../lib/helpers/todosHelper');
  * Creates new instance of the "todo-toggle" component.
  * @constructor
  */
-function TodoToggle() {
-
-}
+function TodoToggle() { }
 
 /**
  * Gets data context for template engine.
@@ -49,7 +47,7 @@ TodoToggle.prototype.bind = function () {
 
 /**
  * Handles toggle event.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoToggle.prototype._handleToggleStatus = function (event) {

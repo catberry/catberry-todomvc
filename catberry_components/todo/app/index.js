@@ -12,6 +12,4 @@ module.exports = TodoApp;
  * Creates new instance of the "todo-app" component.
  * @constructor
  */
-function TodoApp() {
-
-}
+function TodoApp() { }

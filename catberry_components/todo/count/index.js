@@ -14,9 +14,7 @@ var todosHelper = require('../../../lib/helpers/todosHelper');
  * Creates new instance of the "todo-count" component.
  * @constructor
  */
-function TodoCount() {
-
-}
+function TodoCount() { }
 
 /**
  * Gets data context for template engine.
