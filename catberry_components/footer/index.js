@@ -12,6 +12,4 @@ module.exports = Footer;
  * Creates new instance of the "footer" component.
  * @constructor
  */
-function Footer() {
-
-}
+function Footer() { }

@@ -12,6 +12,4 @@ module.exports = TodoHeader;
  * Creates new instance of the "todo-header" component.
  * @constructor
  */
-function TodoHeader() {
-
-}
+function TodoHeader() { }

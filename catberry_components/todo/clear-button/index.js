@@ -14,9 +14,7 @@ var todosHelper = require('../../../lib/helpers/todosHelper');
  * Creates new instance of the "todo-clear-button" component.
  * @constructor
  */
-function TodoClearButton() {
-
-}
+function TodoClearButton() { }
 
 /**
  * Gets data context for template engine.

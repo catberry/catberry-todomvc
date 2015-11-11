@@ -15,9 +15,7 @@ var EDITING_CLASS_NAME = 'editing',
  * Creates new instance of the "todo-list" component.
  * @constructor
  */
-function TodoList() {
-
-}
+function TodoList() { }
 
 /**
  * Gets data context for template engine.
@@ -59,7 +57,7 @@ TodoList.prototype.bind = function () {
 
 /**
  * Handles changed status of todo.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoList.prototype._handleMark = function (event) {
@@ -74,7 +72,7 @@ TodoList.prototype._handleMark = function (event) {
 
 /**
  * Handles edit of todo.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoList.prototype._handleEdit = function (event) {
@@ -93,7 +91,7 @@ TodoList.prototype._handleEdit = function (event) {
 
 /**
  * Handles start editing of todo.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoList.prototype._handleStartEditing = function (event) {
@@ -106,7 +104,7 @@ TodoList.prototype._handleStartEditing = function (event) {
 
 /**
  * Handles finish editing of todo.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoList.prototype._handleFinishEditing = function (event) {
@@ -118,7 +116,7 @@ TodoList.prototype._handleFinishEditing = function (event) {
 
 /**
  * Handles cancel editing of todo.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoList.prototype._handleCancelEditing = function (event) {
@@ -134,7 +132,7 @@ TodoList.prototype._handleCancelEditing = function (event) {
 
 /**
  * Handles deleting of todo.
- * @param {Event} event
+ * @param {Event} event DOM event.
  * @private
  */
 TodoList.prototype._handleDelete = function (event) {
