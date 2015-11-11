@@ -12,9 +12,7 @@ module.exports = TodoFilters;
  * Creates new instance of the "todo-filters" component.
  * @constructor
  */
-function TodoFilters() {
-
-}
+function TodoFilters() { }
 
 /**
  * Gets data context for template engine.

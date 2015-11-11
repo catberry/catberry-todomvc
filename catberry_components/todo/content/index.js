@@ -12,9 +12,7 @@ module.exports = TodoContent;
  * Creates new instance of the "todo-content" component.
  * @constructor
  */
-function TodoContent() {
-
-}
+function TodoContent() { }
 
 /**
  * Gets data context for template engine.

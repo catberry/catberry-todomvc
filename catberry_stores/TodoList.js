@@ -16,9 +16,7 @@ var todosHelper = require('../lib/helpers/todosHelper'),
  * Creates new instance of the "todo-list" store.
  * @constructor
  */
-function TodoList() {
-
-}
+function TodoList() { }
 
 /**
  * Current lifetime of data (in milliseconds) that is returned by this store.
@@ -41,7 +39,7 @@ TodoList.prototype.load = function () {
 
 /**
  * Handles action named "add-todo".
- * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ * @param {Object} args Action arguments.
  */
 TodoList.prototype.handleAddTodo = function (args) {
 	todosHelper.add(todos, args.label);
@@ -51,7 +49,7 @@ TodoList.prototype.handleAddTodo = function (args) {
 
 /**
  * Handles action named "mark-todo".
- * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ * @param {Object} args Action arguments.
  */
 TodoList.prototype.handleMarkTodo = function (args) {
 	if (!todos.hasOwnProperty(args.key)) {
@@ -65,7 +63,7 @@ TodoList.prototype.handleMarkTodo = function (args) {
 
 /**
  * Handles action named "mark-all-todos".
- * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ * @param {Object} args Action arguments.
  */
 TodoList.prototype.handleMarkAllTodos = function (args) {
 	todosHelper.setStatusToAll(todos, args.isCompleted);
@@ -75,7 +73,7 @@ TodoList.prototype.handleMarkAllTodos = function (args) {
 
 /**
  * Handles action named "edit-todo".
- * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ * @param {Object} args Action arguments.
  */
 TodoList.prototype.handleEditTodo = function (args) {
 	if (!args.label) {
@@ -94,7 +92,7 @@ TodoList.prototype.handleEditTodo = function (args) {
 
 /**
  * Handles action named "delete-todo".
- * @returns {Promise<Object>|Object|null|undefined} Response to component.
+ * @param {Object} args Action arguments.
  */
 TodoList.prototype.handleDeleteTodo = function (args) {
 	if (!todos.hasOwnProperty(args.key)) {
@@ -108,7 +106,6 @@ TodoList.prototype.handleDeleteTodo = function (args) {
 
 /**
  * Handles action named "delete-completed-todos".
- * @returns {Promise<Object>|Object|null|undefined} Response to component.
  */
 TodoList.prototype.handleDeleteCompletedTodos = function () {
 	todos = todosHelper.filter(todos, todosHelper.only.active);
