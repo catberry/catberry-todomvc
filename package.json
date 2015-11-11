@@ -13,16 +13,18 @@
   "author": "Julia Rechkunova",
   "license": "MIT",
   "dependencies": {
-    "catberry": "^6.0.0",
-    "catberry-handlebars": "^1.0.4",
+    "catberry": "^7.0.0",
+    "catberry-handlebars": "^1.0.8",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
-    "gulp": "^3.8.11",
-    "jscs": "^1.11.3",
-    "jshint": "^2.6.0",
+    "gulp": "^3.9.0",
     "serve-static": "^1.0.0",
     "todomvc-app-css": "^1.0.0",
     "todomvc-common": "^1.0.0"
+  },
+  "devDependencies": {
+    "jscs": "^2.5.1",
+    "jshint": "^2.8.0"
   },
   "engines": {
     "node": ">=0.10"
