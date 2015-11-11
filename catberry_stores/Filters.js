@@ -17,9 +17,7 @@ var AVAILABLE_FILTERS = {
  * Creates new instance of the "filters" store.
  * @constructor
  */
-function Filters() {
-
-}
+function Filters() { }
 
 /**
  * Current lifetime of data (in milliseconds) that is returned by this store.

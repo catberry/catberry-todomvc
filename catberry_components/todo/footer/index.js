@@ -12,9 +12,7 @@ module.exports = TodoFooter;
  * Creates new instance of the "todo-footer" component.
  * @constructor
  */
-function TodoFooter() {
-
-}
+function TodoFooter() { }
 
 /**
  * Gets data context for template engine.
