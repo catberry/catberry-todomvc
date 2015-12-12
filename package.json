@@ -1,6 +1,6 @@
 {
   "name": "catberry-todomvc",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "TodoMVC implementation on Catberry Framework",
   "repository": {
     "type": "git",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "dependencies": {
     "catberry": "^7.0.0",
-    "catberry-handlebars": "^1.0.8",
+    "catberry-handlebars": "^2.0.1",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
     "gulp": "^3.9.0",
@@ -27,7 +27,7 @@
     "jshint": "^2.8.0"
   },
   "engines": {
-    "node": ">=0.10"
+    "node": ">=0.12"
   },
   "scripts": {
     "start": "npm run release",
