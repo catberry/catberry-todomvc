@@ -1,9 +1,5 @@
 'use strict';
 
-module.exports = TodoCount;
-
-var todosHelper = require('../../../lib/helpers/todosHelper');
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -11,27 +7,32 @@ var todosHelper = require('../../../lib/helpers/todosHelper');
  */
 
 /**
- * Creates new instance of the "todo-count" component.
- * @constructor
+ * "todo-count" component.
  */
-function TodoCount() { }
+class TodoCount {
+	constructor(locator) {
+		this.todosHelper = locator.resolve('todosHelper');
+	}
 
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TodoCount.prototype.render = function () {
-	var storeData = this.$context.getStoreData();
+	/**
+	 * Gets data context for template engine.
+	 * This method is optional.
+	 * @returns {Promise<Object>|Object|null|undefined} Data context
+	 * for template engine.
+	 */
+	render() {
+		const storeData = this.$context.getStoreData();
 
-	return storeData.then(function (data) {
-		var count = todosHelper
-				.getCount(data.allItems, todosHelper.only.active);
+		return storeData.then((data) => {
+			const count = this.todosHelper
+				.getCount(data.allItems, this.todosHelper.states.active);
 
-		return {
-			count: count,
-			isEmpty: (count === 0)
-		};
-	});
-};
+			return {
+				count,
+				onlyOneItem: count === 1
+			};
+		});
+	}
+}
+
+module.exports = TodoCount;

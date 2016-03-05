@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = Head;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -9,25 +7,17 @@ module.exports = Head;
  */
 
 /**
- * Creates new instance of "head" component.
- * @param {Object} $config Catberry application config.
- * @constructor
+ * "head" component.
  */
-function Head($config) {
-	this._config = $config;
+class Head {
+
+	/**
+	 * Gets data for template.
+	 * @returns {Object} Data object.
+	 */
+	render() {
+		return this.$context.locator.resolve('config');
+	}
 }
 
-/**
- * Current config.
- * @type {Object}
- * @private
- */
-Head.prototype._config = null;
-
-/**
- * Gets data for template.
- * @returns {Object} Data object.
- */
-Head.prototype.render = function () {
-	return this._config;
-};
+module.exports = Head;

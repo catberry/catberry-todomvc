@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = Footer;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -9,7 +7,8 @@ module.exports = Footer;
  */
 
 /**
- * Creates new instance of the "footer" component.
- * @constructor
+ * "footer" component.
  */
-function Footer() { }
+class Footer { }
+
+module.exports = Footer;

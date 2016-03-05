@@ -1,10 +1,6 @@
 'use strict';
 
-module.exports = TodoList;
-
-var todosHelper = require('../lib/helpers/todosHelper'),
-	data = require('../todos.json'),
-	todos = todosHelper.loadFromObject(data);
+const data = require('../todos.json');
 
 /*
  * This is a Catberry Store file.
@@ -12,103 +8,100 @@ var todosHelper = require('../lib/helpers/todosHelper'),
  * https://github.com/catberry/catberry/blob/master/docs/index.md#stores
  */
 
-/**
- * Creates new instance of the "todo-list" store.
- * @constructor
- */
-function TodoList() { }
-
-/**
- * Current lifetime of data (in milliseconds) that is returned by this store.
- * @type {number} Lifetime in milliseconds.
- */
-TodoList.prototype.$lifetime = 60000;
-
-/**
- * Loads data from remote source.
- * @returns {Promise<Object>|Object|null|undefined} Loaded data.
- */
-TodoList.prototype.load = function () {
-	var filter = this.$context.state.filter || null;
-
-	return {
-		items: todosHelper.filter(todos, filter),
-		allItems: todos
-	};
-};
-
-/**
- * Handles action named "add-todo".
- * @param {Object} args Action arguments.
- */
-TodoList.prototype.handleAddTodo = function (args) {
-	todosHelper.add(todos, args.label);
-
-	this.$context.changed();
-};
-
-/**
- * Handles action named "mark-todo".
- * @param {Object} args Action arguments.
- */
-TodoList.prototype.handleMarkTodo = function (args) {
-	if (!todos.hasOwnProperty(args.key)) {
-		return;
+class TodoListStore {
+	constructor(locator) {
+		this.todosHelper = locator.resolve('todosHelper');
+		this.todos = this.todosHelper.loadFromObject(data);
 	}
 
-	todos[args.key].setStatus(args.isCompleted);
+	/**
+	 * Loads data.
+	 * @returns {{items: Object, allItems: Object}}
+     */
+	load() {
+		const filter = this.$context.state.filter || null;
 
-	this.$context.changed();
-};
-
-/**
- * Handles action named "mark-all-todos".
- * @param {Object} args Action arguments.
- */
-TodoList.prototype.handleMarkAllTodos = function (args) {
-	todosHelper.setStatusToAll(todos, args.isCompleted);
-
-	this.$context.changed();
-};
-
-/**
- * Handles action named "edit-todo".
- * @param {Object} args Action arguments.
- */
-TodoList.prototype.handleEditTodo = function (args) {
-	if (!args.label) {
-		this.handleDeleteTodo(args);
-		return;
+		return {
+			items: this.todosHelper.filter(this.todos, filter),
+			allItems: this.todos
+		};
 	}
 
-	if (!todos.hasOwnProperty(args.key)) {
-		return;
+	/**
+	 * Handles action named "add-todo".
+	 * @param {Object} args Action arguments.
+	 */
+	handleAddTodo(args) {
+		this.todosHelper.add(this.todos, args.label);
+
+		this.$context.changed();
 	}
 
-	todos[args.key].edit(args.label);
+	/**
+	 * Handles action named "mark-todo".
+	 * @param {Object} args Action arguments.
+	 */
+	handleMarkTodo(args) {
+		if (!this.todos.hasOwnProperty(args.key)) {
+			return;
+		}
 
-	this.$context.changed();
-};
+		this.todos[args.key].setStatus(args.isCompleted);
 
-/**
- * Handles action named "delete-todo".
- * @param {Object} args Action arguments.
- */
-TodoList.prototype.handleDeleteTodo = function (args) {
-	if (!todos.hasOwnProperty(args.key)) {
-		return;
+		this.$context.changed();
 	}
 
-	delete todos[args.key];
+	/**
+	 * Handles action named "mark-all-todos".
+	 * @param {Object} args Action arguments.
+	 */
+	handleMarkAllTodos(args) {
+		this.todosHelper.setStatusToAll(this.todos, args.isCompleted);
 
-	this.$context.changed();
-};
+		this.$context.changed();
+	}
 
-/**
- * Handles action named "delete-completed-todos".
- */
-TodoList.prototype.handleDeleteCompletedTodos = function () {
-	todos = todosHelper.filter(todos, todosHelper.only.active);
+	/**
+	 * Handles action named "edit-todo".
+	 * @param {Object} args Action arguments.
+	 */
+	handleEditTodo(args) {
+		if (!args.label) {
+			this.handleDeleteTodo(args);
+			return;
+		}
 
-	this.$context.changed();
-};
+		if (!this.todos.hasOwnProperty(args.key)) {
+			return;
+		}
+
+		this.todos[args.key].edit(args.label);
+
+		this.$context.changed();
+	}
+
+	/**
+	 * Handles action named "delete-todo".
+	 * @param {Object} args Action arguments.
+	 */
+	handleDeleteTodo(args) {
+		if (!this.todos.hasOwnProperty(args.key)) {
+			return;
+		}
+
+		delete this.todos[args.key];
+
+		this.$context.changed();
+	}
+
+	/**
+	 * Handles action named "delete-completed-todos".
+	 */
+	handleDeleteCompletedTodos() {
+		this.todos = this.todosHelper.filter(this.todos, this.todosHelper.states.active);
+
+		this.$context.changed();
+	}
+}
+
+module.exports = TodoListStore;
