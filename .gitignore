@@ -2,3 +2,4 @@ __BrowserBundle.js
 node_modules
 public
 .idea
+npm-debug.log

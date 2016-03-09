@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = TodoFooter;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -12,20 +10,23 @@ module.exports = TodoFooter;
  * Creates new instance of the "todo-footer" component.
  * @constructor
  */
-function TodoFooter() { }
+class TodoFooter {
 
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TodoFooter.prototype.render = function () {
-	var storeData = this.$context.getStoreData();
+	/**
+	 * Gets data context for template engine.
+	 * This method is optional.
+	 * @returns {Promise<Object>|Object|null|undefined} Data context
+	 * for template engine.
+	 */
+	render() {
+		const storeData = this.$context.getStoreData();
 
-	return storeData.then(function (data) {
-		return {
-			hasItems: (Object.keys(data.allItems).length > 0)
-		};
-	});
-};
+		return storeData.then((data) => {
+			return {
+				hasItems: (Object.keys(data.allItems).length > 0)
+			};
+		});
+	}
+}
+
+module.exports = TodoFooter;
