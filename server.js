@@ -1,40 +1,41 @@
 'use strict';
 
-var catberry = require('catberry'),
-	isRelease = process.argv.length >= 3 ?
-		process.argv[2] === 'release' : undefined,
-	port = process.argv.length >= 4 ?
-		Number(process.argv[3]) : undefined;
+const IS_RELEASE = process.argv.length >= 3 ?
+	process.argv[2] === 'release' : undefined;
+const PORT = process.argv.length >= 4 ?
+	Number(process.argv[3]) : undefined;
 
-var http = require('http'),
-	util = require('util'),
-	path = require('path'),
-	publicPath = path.join(__dirname, 'public'),
-	connect = require('connect'),
-	config = require('./config/environment.json'),
-	templateEngine = require('catberry-handlebars'),
-	cat = catberry.create(config),
-	app = connect();
+const catberry = require('catberry');
+const http = require('http');
+const path = require('path');
+const connect = require('connect');
+const config = require('./config/environment.json');
+const templateEngine = require('catberry-handlebars');
+const Todos = require('./lib/Todos');
+const cat = catberry.create(config);
+const app = connect();
 
-var READY_MESSAGE = 'Ready to handle incoming requests on port %d';
+const PUBLIC_PATH = path.join(__dirname, 'public');
+const READY_MESSAGE = 'Ready to handle incoming requests on port';
 
-config.publicPath = publicPath;
-config.server.port = port || config.server.port || 3000;
-config.isRelease = isRelease === undefined ? config.isRelease : isRelease;
+config.publicPath = PUBLIC_PATH;
+config.server.port = PORT || config.server.port || 3000;
+config.isRelease = IS_RELEASE === undefined ? config.isRelease : IS_RELEASE;
 
 templateEngine.register(cat.locator);
+cat.locator.register('todosHelper', Todos);
 
 var serveStatic = require('serve-static');
-app.use(serveStatic(publicPath));
+app.use(serveStatic(PUBLIC_PATH));
 
 app.use(cat.getMiddleware());
 
-var errorhandler = require('errorhandler');
+const errorhandler = require('errorhandler');
 app.use(errorhandler());
 
-cat.events.on('ready', function () {
-	var logger = cat.locator.resolve('logger');
-	logger.info(util.format(READY_MESSAGE, config.server.port));
+cat.events.on('ready', () => {
+	const logger = cat.locator.resolve('logger');
+	logger.info(`${READY_MESSAGE} ${config.server.port}`);
 });
 
 http
