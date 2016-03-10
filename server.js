@@ -15,6 +15,9 @@ const Todos = require('./lib/Todos');
 const cat = catberry.create(config);
 const app = connect();
 
+const logger = require('catberry-logger');
+logger.register(cat.locator);
+
 const PUBLIC_PATH = path.join(__dirname, 'public');
 const READY_MESSAGE = 'Ready to handle incoming requests on port';
 

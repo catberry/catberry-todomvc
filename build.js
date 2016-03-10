@@ -9,5 +9,8 @@ const cat = catberry.create({
 	isRelease: IS_RELEASE
 });
 
+const logger = require('catberry-logger');
+logger.register(cat.locator);
+
 templateEngine.register(cat.locator);
 cat.build();
