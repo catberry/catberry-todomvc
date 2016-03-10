@@ -15,7 +15,7 @@
   "dependencies": {
     "catberry": "catberry/catberry#develop",
     "catberry-handlebars": "catberry/catberry-handlebars#develop",
-    "catberry-logger": "catberry/catberry-logger",
+    "catberry-logger": "^1.0.0",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
     "gulp": "^3.9.1",
