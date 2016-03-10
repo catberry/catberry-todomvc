@@ -1,5 +1,6 @@
 # Catberry • [TodoMVC](http://todomvc.com)
 
+[![Build Status](https://travis-ci.org/catberry/catberry-todomvc.svg?branch=master)](https://travis-ci.org/catberry/catberry-todomvc)
 [![Join the chat at https://gitter.im/catberry/catberry-todomvc](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/catberry/catberry-todomvc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > Catberry is a framework with Flux architecture, isomorphic web-components and progressive rendering
@@ -11,7 +12,7 @@
 
 ### Support
 
-- [Gitter](https://gitter.im/catberry/catberry)
+- [Gitter](https://gitter.im/catberry/main)
 - [Twitter](https://twitter.com/catberryjs)
 
 *Let us [know](https://github.com/catberry/catberry/issues) if you discover anything worth sharing.*
@@ -43,7 +44,7 @@ npm start
 There are a lot of ways to contribute:
 
 * Give it a star
-* Join the [Gitter](https://gitter.im/catberry/catberry) room and leave a feedback or help with answering users' questions
+* Join the [Gitter](https://gitter.im/catberry/main) room and leave a feedback or help with answering users' questions
 * [Submit a bug or a feature request](https://github.com/catberry/catberry-todomvc/issues)
 * [Submit a PR](https://github.com/catberry/catberry-todomvc/blob/develop/CONTRIBUTING.md)
 
