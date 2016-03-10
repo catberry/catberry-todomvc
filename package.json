@@ -15,6 +15,7 @@
   "dependencies": {
     "catberry": "catberry/catberry#develop",
     "catberry-handlebars": "catberry/catberry-handlebars#develop",
+    "catberry-logger": "catberry/catberry-logger",
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
     "gulp": "^3.9.1",
@@ -28,7 +29,7 @@
     "phantomjs-prebuilt": "^2.1.4"
   },
   "engines": {
-    "node": ">=5"
+    "node": ">=4"
   },
   "scripts": {
     "start": "npm run release",

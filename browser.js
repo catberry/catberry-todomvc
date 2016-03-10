@@ -9,6 +9,9 @@ const Todos = require('./lib/Todos');
 const config = require('./config/environment.json');
 const cat = catberry.create(config);
 
+const logger = require('catberry-logger');
+logger.register(cat.locator);
+
 templateEngine.register(cat.locator);
 cat.locator.register('todosHelper', Todos, true);
 
