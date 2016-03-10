@@ -28,7 +28,7 @@
     "phantomjs-prebuilt": "^2.1.4"
   },
   "engines": {
-    "node": ">=5"
+    "node": ">=4"
   },
   "scripts": {
     "start": "npm run release",
