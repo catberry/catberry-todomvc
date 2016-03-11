@@ -1,7 +1,7 @@
 # Catberry • [TodoMVC](http://todomvc.com)
 
 [![Build Status](https://travis-ci.org/catberry/catberry-todomvc.svg?branch=master)](https://travis-ci.org/catberry/catberry-todomvc)
-[![Join the chat at https://gitter.im/catberry/catberry-todomvc](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/catberry/catberry-todomvc?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![Join the chat at https://gitter.im/catberry/catberry-todomvc](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/catberry/main?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 > Catberry is a framework with Flux architecture, isomorphic web-components and progressive rendering
 
