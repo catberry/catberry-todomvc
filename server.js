@@ -28,7 +28,7 @@ config.isRelease = IS_RELEASE === undefined ? config.isRelease : IS_RELEASE;
 templateEngine.register(cat.locator);
 cat.locator.register('todosHelper', Todos);
 
-var serveStatic = require('serve-static');
+const serveStatic = require('serve-static');
 app.use(serveStatic(PUBLIC_PATH));
 
 app.use(cat.getMiddleware());
