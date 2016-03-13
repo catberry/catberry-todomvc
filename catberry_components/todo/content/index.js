@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = TodoContent;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -9,23 +7,25 @@ module.exports = TodoContent;
  */
 
 /**
- * Creates new instance of the "todo-content" component.
- * @constructor
+ * "todo-content" component.
  */
-function TodoContent() { }
+class TodoContent {
 
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TodoContent.prototype.render = function () {
-	var storeData = this.$context.getStoreData();
+	/**
+	 * Gets data context for template engine.
+	 * This method is optional.
+	 * @returns {Promise<Object>|Object|null|undefined} Data context
+	 * for template engine.
+	 */
+	render() {
+		const storeData = this.$context.getStoreData();
 
-	return storeData.then(function (data) {
-		return {
-			hasItems: (Object.keys(data.items).length > 0)
-		};
-	});
-};
+		return storeData.then((data) => {
+			return {
+				hasItems: (Object.keys(data.items).length > 0)
+			};
+		});
+	}
+}
+
+module.exports = TodoContent;

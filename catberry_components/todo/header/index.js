@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = TodoHeader;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -9,7 +7,8 @@ module.exports = TodoHeader;
  */
 
 /**
- * Creates new instance of the "todo-header" component.
- * @constructor
+ * "todo-header" component.
  */
-function TodoHeader() { }
+class TodoHeader { }
+
+module.exports = TodoHeader;

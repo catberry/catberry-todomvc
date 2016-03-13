@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = TodoInput;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -9,59 +7,63 @@ module.exports = TodoInput;
  */
 
 /**
- * Creates new instance of the "todo-input" component.
- * @constructor
+ * "todo-input" component.
  */
-function TodoInput() { }
+class TodoInput {
+	constructor() {
 
-/**
- * Input DOM element
- * @type {Element}
- */
-TodoInput.prototype.inputElement = null;
+		/**
+		 * Input DOM element
+		 * @type {Element}
+		 */
+		this.inputElement = null;
+	}
 
-/**
- * Returns event binding settings for the component.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Binding settings.
- */
-TodoInput.prototype.bind = function () {
-	this.inputElement = this.$context.element.querySelector('input');
-	return {
-		submit: {
-			form: this._handleAddTodo
-		}
-	};
-};
+	/**
+	 * Returns event binding settings for the component.
+	 * This method is optional.
+	 * @returns {Promise<Object>|Object|null|undefined} Binding settings.
+	 */
+	bind() {
+		this.inputElement = this.$context.element.querySelector('input');
+		return {
+			submit: {
+				form: this._handleAddTodo
+			}
+		};
+	}
 
-/**
- * Handles submit form event.
- * @param {Event} event DOM event.
- * @private
- */
-TodoInput.prototype._handleAddTodo = function (event) {
-	event.preventDefault();
-	event.stopPropagation();
+	/**
+	 * Handles submit form event.
+	 * @param {Event} event DOM event.
+	 * @private
+	 */
+	_handleAddTodo(event) {
+		event.preventDefault();
+		event.stopPropagation();
 
-	this.$context.sendAction('add-todo', {
-		label: this.getValue()
-	});
+		this.$context.sendAction('add-todo', {
+			label: this.getValue()
+		});
 
-	this.clearValue();
-};
+		this.clearValue();
+	}
 
-/**
- * Gets label of todo.
- * @returns {string} Current value in input.
- */
-TodoInput.prototype.getValue = function () {
-	return this.inputElement.value;
-};
+	/**
+	 * Gets label of todo.
+	 * @returns {string} Current value in input.
+	 */
+	getValue() {
+		return this.inputElement.value;
+	}
 
-/**
- * Clears input.
- */
-TodoInput.prototype.clearValue = function () {
-	this.inputElement.value = '';
-	this.inputElement.focus();
-};
+	/**
+	 * Clears input.
+	 */
+	clearValue() {
+		this.inputElement.value = '';
+		this.inputElement.focus();
+	}
+}
+
+module.exports = TodoInput;
