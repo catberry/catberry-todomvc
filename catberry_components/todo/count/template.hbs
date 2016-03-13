@@ -1,4 +1,3 @@
-<!-- This should be `0 item left` by default -->
-<span id="todo-count">
-	<strong>{{count}}</strong> item{{#unless isEmpty}}s{{/unless}} left
+<span class="todo-count" id="todo-count">
+	<strong>{{count}}</strong> item{{#unless onlyOneItem}}s{{/unless}} left
 </span>

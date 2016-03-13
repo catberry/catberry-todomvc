@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = TodoApp;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -9,7 +7,8 @@ module.exports = TodoApp;
  */
 
 /**
- * Creates new instance of the "todo-app" component.
- * @constructor
+ * "todo-app" component.
  */
-function TodoApp() { }
+class TodoApp { }
+
+module.exports = TodoApp;

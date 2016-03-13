@@ -1,16 +1,16 @@
 'use strict';
 
-var gulp = require('gulp'),
-	path = require('path');
+const gulp = require('gulp');
+const path = require('path');
 
-gulp.task('copy-todomvc', function () {
-	return gulp.src(path.join('node_modules', 'todomvc*', '**'))
-		.pipe(gulp.dest(path.join('public', 'lib')));
-});
+gulp.task('copy-todomvc', () =>
+	gulp.src(path.join('node_modules', 'todomvc*', '**'))
+		.pipe(gulp.dest(path.join('public', 'lib')))
+);
 
-gulp.task('copy-static', function () {
-	return gulp.src(path.join('static', '**'))
-			.pipe(gulp.dest('public'));
-});
+gulp.task('copy-static', () =>
+	gulp.src(path.join('static', '**'))
+		.pipe(gulp.dest('public'))
+);
 
 gulp.task('default', ['copy-todomvc', 'copy-static']);

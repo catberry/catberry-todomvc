@@ -1,9 +1,5 @@
 'use strict';
 
-module.exports = TodoToggle;
-
-var todosHelper = require('../../../lib/helpers/todosHelper');
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -11,49 +7,54 @@ var todosHelper = require('../../../lib/helpers/todosHelper');
  */
 
 /**
- * Creates new instance of the "todo-toggle" component.
- * @constructor
+ * "todo-toggle" component.
  */
-function TodoToggle() { }
+class TodoToggle {
+	constructor(locator) {
+		this.todosHelper = locator.resolve('todosHelper');
+	}
 
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TodoToggle.prototype.render = function () {
-	var storeData = this.$context.getStoreData();
+	/**
+	 * Gets data context for template engine.
+	 * This method is optional.
+	 * @returns {Promise<Object>|Object|null|undefined} Data context
+	 * for template engine.
+	 */
+	render() {
+		const storeData = this.$context.getStoreData();
 
-	return storeData.then(function (data) {
+		return storeData.then((data) => {
+			return {
+				areAllCompleted: this.todosHelper.areAllCompleted(data.items)
+			};
+		});
+	}
+
+	/**
+	 * Returns event binding settings for the component.
+	 * This method is optional.
+	 * @returns {Promise<Object>|Object|null|undefined} Binding settings.
+	 */
+	bind() {
 		return {
-			areAllCompleted: todosHelper.areAllCompleted(data.items)
+			change: {
+				input: this._handleToggleStatus
+			}
 		};
-	});
-};
+	}
 
-/**
- * Returns event binding settings for the component.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Binding settings.
- */
-TodoToggle.prototype.bind = function () {
-	return {
-		change: {
-			input: this._handleToggleStatus
-		}
-	};
-};
+	/**
+	 * Handles toggle event.
+	 * @param {Event} event DOM event.
+	 * @private
+	 */
+	_handleToggleStatus(event) {
+		const targetElement = event.currentTarget;
 
-/**
- * Handles toggle event.
- * @param {Event} event DOM event.
- * @private
- */
-TodoToggle.prototype._handleToggleStatus = function (event) {
-	var targetElement = event.currentTarget;
+		this.$context.sendAction('mark-all-todos', {
+			isCompleted: targetElement.checked
+		});
+	}
+}
 
-	this.$context.sendAction('mark-all-todos', {
-		isCompleted: targetElement.checked
-	});
-};
+module.exports = TodoToggle;

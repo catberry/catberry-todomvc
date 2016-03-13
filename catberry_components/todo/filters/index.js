@@ -1,7 +1,5 @@
 'use strict';
 
-module.exports = TodoFilters;
-
 /*
  * This is a Catberry Cat-component file.
  * More details can be found here
@@ -9,17 +7,19 @@ module.exports = TodoFilters;
  */
 
 /**
- * Creates new instance of the "todo-filters" component.
- * @constructor
+ * "todo-filters" component.
  */
-function TodoFilters() { }
+class TodoFilters {
 
-/**
- * Gets data context for template engine.
- * This method is optional.
- * @returns {Promise<Object>|Object|null|undefined} Data context
- * for template engine.
- */
-TodoFilters.prototype.render = function () {
-	return this.$context.getStoreData();
-};
+	/**
+	 * Gets data context for template engine.
+	 * This method is optional.
+	 * @returns {Promise<Object>|Object|null|undefined} Data context
+	 * for template engine.
+	 */
+	render() {
+		return this.$context.getStoreData();
+	}
+}
+
+module.exports = TodoFilters;
