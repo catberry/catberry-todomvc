@@ -58,7 +58,7 @@ casper.test.begin('TodoMVC tests in browser', NUMBER_OF_TESTS, function(test) {
 	casper.thenOpen(URL, function() {
 		test.assertSelectorHasText('.selected', 'All', 'Current filter is "all"');
 		this.fillSelectors('form', {
-			'#new-todo': 'Test TodoMVC'
+			'.new-todo': 'Test TodoMVC'
 		}, true);
 	});
 
@@ -73,7 +73,7 @@ casper.test.begin('TodoMVC tests in browser', NUMBER_OF_TESTS, function(test) {
 		test.assertEqual(casper.getCurrentUrl(), URL + '/active', 'Routing works.');
 	});
 
-	casper.thenClick('#toggle-all');
+	casper.thenClick('.toggle-all');
 
 	casper.then(function() {
 		test.assertElementCount('.todo-list > li', 0, 'All todos were marked as completed');
