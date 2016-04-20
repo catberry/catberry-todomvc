@@ -42,8 +42,14 @@ class TodoInput {
 		event.preventDefault();
 		event.stopPropagation();
 
+		const value = this.getValue().trim();
+
+		if (!value) {
+			return;
+		}
+
 		this.$context.sendAction('add-todo', {
-			label: this.getValue()
+			label: value
 		});
 
 		this.clearValue();
@@ -54,7 +60,7 @@ class TodoInput {
 	 * @returns {string} Current value in input.
 	 */
 	getValue() {
-		return this.inputElement.value;
+		return this.inputElement.value || '';
 	}
 
 	/**
