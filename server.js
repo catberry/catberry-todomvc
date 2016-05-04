@@ -21,7 +21,6 @@ logger.register(cat.locator);
 const PUBLIC_PATH = path.join(__dirname, 'public');
 const READY_MESSAGE = 'Ready to handle incoming requests on port';
 
-config.publicPath = PUBLIC_PATH;
 config.server.port = PORT || config.server.port || 3000;
 config.isRelease = IS_RELEASE === undefined ? config.isRelease : IS_RELEASE;
 
