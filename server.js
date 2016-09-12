@@ -26,6 +26,12 @@ config.isRelease = IS_RELEASE === undefined ? config.isRelease : IS_RELEASE;
 templateEngine.register(cat.locator);
 cat.locator.register('todosHelper', Todos);
 
+const compression = require('compression');
+const zlib = require('zlib');
+app.use(compression({
+	flush: zlib.Z_PARTIAL_FLUSH
+}));
+
 const serveStatic = require('serve-static');
 app.use(serveStatic(PUBLIC_PATH));
 
