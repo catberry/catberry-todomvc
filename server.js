@@ -2,8 +2,7 @@
 
 const IS_RELEASE = process.argv.length >= 3 ?
 	process.argv[2] === 'release' : undefined;
-const PORT = process.argv.length >= 4 ?
-	Number(process.argv[3]) : undefined;
+const PORT = Number(process.env.PORT);
 
 const catberry = require('catberry');
 const http = require('http');
@@ -26,6 +25,12 @@ config.isRelease = IS_RELEASE === undefined ? config.isRelease : IS_RELEASE;
 
 templateEngine.register(cat.locator);
 cat.locator.register('todosHelper', Todos);
+
+const compression = require('compression');
+const zlib = require('zlib');
+app.use(compression({
+	flush: zlib.Z_PARTIAL_FLUSH
+}));
 
 const serveStatic = require('serve-static');
 app.use(serveStatic(PUBLIC_PATH));
