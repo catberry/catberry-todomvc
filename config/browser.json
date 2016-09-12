@@ -1,6 +1,6 @@
 {
 	"title": "Catberry • TodoMVC",
 	"logger": {
-	  "level": 10
+		"level": 40
 	}
 }
