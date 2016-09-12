@@ -83,7 +83,7 @@ casper.test.begin('TodoMVC tests in browser', NUMBER_OF_TESTS, function(test) {
 	casper.back();
 
 	casper.then(function() {
-		casper.mouseEvent('mouseenter', '.todo-list > li:first-of-type');
+		casper.mouse.move('.todo-list > li:first-of-type');
 		casper.mouseEvent('click', '.destroy');
 	});
 
