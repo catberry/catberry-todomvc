@@ -19,6 +19,7 @@
     "connect": "^3.0.0",
     "errorhandler": "^1.0.0",
     "gulp": "^3.9.1",
+    "compression": "^1.6.2",
     "serve-static": "^1.0.0",
     "todomvc-app-css": "^2.0.4"
   },
