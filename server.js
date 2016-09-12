@@ -2,8 +2,7 @@
 
 const IS_RELEASE = process.argv.length >= 3 ?
 	process.argv[2] === 'release' : undefined;
-const PORT = process.argv.length >= 4 ?
-	Number(process.argv[3]) : undefined;
+const PORT = Number(process.env.PORT);
 
 const catberry = require('catberry');
 const http = require('http');
