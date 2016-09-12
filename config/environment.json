@@ -1,7 +1,7 @@
 {
 	"title": "Catberry • TodoMVC",
 	"logger": {
-	  "level": 10
+		"level": 30
 	},
 	"server": {
 		"port": 3000
