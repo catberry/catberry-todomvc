@@ -1,0 +1,11 @@
+public
+node_modules
+*.md
+Dockerfile
+Procfile
+*~
+.*
+*.log
+ehthumbs.db
+Thumbs.db
+__BrowserBundle.js
