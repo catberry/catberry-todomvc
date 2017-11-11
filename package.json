@@ -7,9 +7,6 @@
     "url": "git@github.com:catberry/catberry-todomvc.git"
   },
   "main": "./server.js",
-  "browser": {
-    "./config/environment.json": "./config/browser.json"
-  },
   "author": "Julia Rechkunova",
   "license": "MIT",
   "dependencies": {
