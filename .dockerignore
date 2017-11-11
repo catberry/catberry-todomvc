@@ -1,11 +1,12 @@
-public
-node_modules
-*.md
+browser.js
+build.js
+Makefile
 Dockerfile
-Procfile
+*.md
 *~
 .*
 *.log
 ehthumbs.db
 Thumbs.db
 __BrowserBundle.js
+Procfile

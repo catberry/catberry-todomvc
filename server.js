@@ -1,27 +1,33 @@
 'use strict';
 
-const IS_RELEASE = process.argv.length >= 3 ?
-	process.argv[2] === 'release' : undefined;
-const PORT = Number(process.env.PORT);
-
 const catberry = require('catberry');
 const http = require('http');
 const path = require('path');
-const connect = require('connect');
-const config = require('./config/environment.json');
+const express = require('express');
 const templateEngine = require('catberry-handlebars');
 const Todos = require('./lib/Todos');
+
+// configuration
+const config = {
+	title: 'Catberry • TodoMVC',
+	server: {
+		port: Number(process.env.PORT) || 3000
+	},
+	logger: {
+		level: Number(process.env.CAT_LOG_LEVEL) || 30
+	},
+	isRelease: process.argv[2] === 'release',
+	componentsGlob: 'catberry_components/**/cat-component.json',
+	publicDirectoryPath: path.join(__dirname, 'public')
+};
+
 const cat = catberry.create(config);
-const app = connect();
+const app = express();
 
 const logger = require('catberry-logger');
 logger.register(cat.locator);
 
-const PUBLIC_PATH = path.join(__dirname, 'public');
 const READY_MESSAGE = 'Ready to handle incoming requests on port';
-
-config.server.port = PORT || config.server.port || 3000;
-config.isRelease = IS_RELEASE === undefined ? config.isRelease : IS_RELEASE;
 
 templateEngine.register(cat.locator);
 cat.locator.register('todosHelper', Todos);
@@ -33,7 +39,18 @@ app.use(compression({
 }));
 
 const serveStatic = require('serve-static');
-app.use(serveStatic(PUBLIC_PATH));
+app.use(serveStatic(config.publicDirectoryPath));
+
+// serving client config
+// CREATE A SEPARATE OBJECT HERE AND COPY REQUIRED VALUES
+// FROM THE SERVER CONFIG EXCLUDING PRIVATE DATA IF NEEDED
+const clientConfig = {
+	title: config.title,
+	isRelease: config.isRelease,
+	logger: config.logger
+};
+const configResp = `window.$catConfig=${JSON.stringify(clientConfig)}`;
+app.get('/config.js', (req, res) => res.end(configResp));
 
 app.use(cat.getMiddleware());
 

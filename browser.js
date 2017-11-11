@@ -4,10 +4,9 @@ const catberry = require('catberry');
 const templateEngine = require('catberry-handlebars');
 const Todos = require('./lib/Todos');
 
-// this config will be replaced by `./config/browser.json` when building
-// because of `browser` field in `package.json`
-const config = require('./config/environment.json');
-const cat = catberry.create(config);
+// config is assigned in the script included into HEAD component
+// see server.js and the HEAD component for more details
+const cat = catberry.create(window.$catConfig);
 
 const logger = require('catberry-logger');
 logger.register(cat.locator);

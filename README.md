@@ -21,22 +21,26 @@
 
 ### How to use
 
-First of all it is needed to install dependencies:
-
+To run in `release` mode:
 ```
-npm install
-```
-
-Then to start in `debug` mode without script minification and with file watching:
-
-```
-npm run debug
+make run.local.release
 ```
 
-To start in `release` mode:
-
+To start in `debug` mode without script minification and with watching for changes:
 ```
-npm start
+make run.local.dev
+```
+
+Also, you can build a Docker image:
+
+```bash
+make docker
+```
+
+And run it as a container:
+
+```bash
+docker run -it -p 3000:3000 catberry/catberry-todomvc
 ```
 
 ## Contributing
