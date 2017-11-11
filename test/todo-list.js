@@ -1,6 +1,5 @@
 /* eslint-disable strict, prefer-template, prefer-arrow-callback, require-jsdoc */
 
-var config = require('../config/environment.json');
 var todos = require('../todos.json');
 var fs = require('fs');
 
@@ -14,7 +13,7 @@ var casper = require('casper').create({
 });
 
 var failures = [];
-var URL = 'http://localhost:' + config.server.port;
+var URL = 'http://localhost:3000';
 var ACTIVE_TODOS_COUNT = getActiveTodosCount();
 var COMPLETED_TODOS_COUNT = getCompletedTodosCount();
 var NUMBER_OF_TESTS = 18;
@@ -27,7 +26,7 @@ casper.test.begin('TodoMVC tests in browser', NUMBER_OF_TESTS, function(test) {
 	casper.start();
 	casper.wait(20000);
 	casper.thenOpen(URL, function() {
-		test.assertTitle(config.title, 'Page title is the one expected');
+		test.assertTitle('Catberry • TodoMVC', 'Page title is the one expected');
 		test.assertSelectorHasText('.selected', 'All', 'Current filter is "all"');
 		test.assertElementCount('.todo-list > li', todos.items.length, 'All default todos were rendered');
 		test.assertSelectorHasText('.todo-count > strong', ACTIVE_TODOS_COUNT, 'Number of active todos is right.');
