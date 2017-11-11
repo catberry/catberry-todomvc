@@ -16,7 +16,7 @@
     "catberry": "^9.0.0",
     "catberry-handlebars": "^3.1.0",
     "catberry-logger": "^2.0.0",
-    "connect": "^3.6.0",
+    "express": "^4.16.2",
     "errorhandler": "^1.5.0",
     "gulp": "^3.9.1",
     "compression": "^1.6.2",
@@ -33,11 +33,8 @@
     "node": ">=6.10.0"
   },
   "scripts": {
-    "start": "npm run build-release && npm run release",
-    "release": "node ./server.js release",
-    "build-release": "node ./build.js release && ./node_modules/.bin/gulp",
-    "debug": "node ./build.js & ./node_modules/.bin/gulp & node ./server.js",
-    "debug-win": "powershell -Command \"Start-Process -NoNewWindow node ./build.js; Start-Process -NoNewWindow -Wait ./node_modules/.bin/gulp; Start-Process -NoNewWindow -Wait node ./server.js\"",
-    "test": "make"
+    "start": "node ./server.js release",
+    "debug": "node ./server.js",
+    "test": "make test"
   }
 }
